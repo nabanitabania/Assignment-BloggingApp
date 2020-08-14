@@ -1,0 +1,72 @@
+<%- include("../partials/header") %>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="jumbotron">
+                    <div class="text-right">
+                        <a class="btn btn-dark btn-md" href="/blogs/<%= data._id %>/comments/new">Leave comment</a>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <% data.comments.forEach(function(comment){ %>
+                                <strong><%= comment.author.username %></strong>
+                                <div><%= comment.text %></div>
+                                <% if(user && comment.author.id.equals(user._id)){ %>
+                                <a class="btn btn-warning btn-sm" href="/blogs/<%= data._id %>/comments/<%= comment._id%>/edit">Edit</a>
+                                <form id="form" action="/blogs/<%= data._id %>/comments/<%= comment._id%>?_method=DELETE" method="POST">
+                                    <button class="btn btn-danger btn-sm">Delete</button>
+                                </form>
+                                <% } %>
+                                <hr>
+                            <% }) %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-body">
+                        <h2 style="color: #086972;" class="card-title"><%= data.title %></h2><hr>
+                        <h4>Author: <%= data.author.username %></h4>
+                        <p class="card-text"><%= data.description %></p>
+                    </div>
+                    <img src="<%= data.image %>" class="card-img-top">
+                    
+                    <div style="margin-top: 10px;" id="button">
+                        <button class="btn btn-success" id="bttn" data-clipboard-text="http://localhost:3000/blogs/shared/<%= data.share %>">
+                            Click to copy sharing link
+                        </button>
+                    </div>
+                    
+                    <% if(user && data.author.id.equals(user._id)){ %>
+                        <div id="button">
+                            <a class="btn btn-warning btn-md" style="width: 100px;" href="/blogs/<%= data._id %>/edit">Edit</a>
+                            <form id="form" action="/blogs/<%= data._id %>?_method=DELETE" method="POSt">
+                                <button class="btn btn-danger btn-md">Delete</button>
+                            </form>
+                        </div>
+                    <% } %>
+                    
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js"></script>
+<script>
+    var btn = document.getElementById('bttn');
+    var clipboard = new ClipboardJS(btn);
+
+    clipboard.on('success', function(e) {
+        console.log(e);
+    });
+
+    clipboard.on('error', function(e) {
+        console.log(e);
+    });
+</script>
+
+
+<%- include("../partials/footer") %>

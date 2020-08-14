@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<htm>
+    <head>
+        <title>yelpCamp</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/stylesheet/main.css">
+    </head>
+    <body>
+
+        <nav class="navbar navbar-expand-lg" style="background-color: black; color: white; height: 70px; font-size: 20px;">
+            <a class="navbar-brand mb-0 h1" href="/">
+                <img src="https://www.hip-books.com/wp-content/uploads/2016/12/SafeOrgIcon-O-Blog.png" width="30" height="30" class="d-inline-block align-top" alt="" loading="lazy">
+                Blog World
+            </a>
+            <div class="collapse navbar-collapse navbar-right" id="navbarNav">
+                <ul class="navbar-nav">
+                  <% if(!user){ %>
+                    <li class="nav-item">
+                      <a class="nav-link" href="/login">Login</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="/register">Sign up</a>
+                    </li>
+                  <% }else{ %>
+                    <li class="nav-item">
+                      <a class="nav-link" href="/logout">Log out</a>
+                    </li>
+                    <li class="nav-item"><a class="nav-link">Signed In as <%= user.username %></a></li>
+                  <% } %>
+                  
+                  
+              </div>
+        </nav>

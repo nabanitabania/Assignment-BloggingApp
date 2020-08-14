@@ -1,0 +1,18 @@
+<%- include("../partials/header") %>
+
+    
+    <div class="container">
+      <h1>Add a new comment to <%= data.title %></h1>
+      <div class="jumbotron">
+        <form action="/blogs/<%= data._id %>/comments" method="POST">
+            <div class="form-group">
+              <label>Title</label>
+              <input type="text" name="comments[text]" placeholder="Text" class="form-control">
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+    </div>
+    
+    
+<%- include("../partials/footer") %>

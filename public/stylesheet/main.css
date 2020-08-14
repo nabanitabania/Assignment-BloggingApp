@@ -1,0 +1,42 @@
+body {
+    background-color: #1b262c;
+    color: white;
+}
+.navbar{
+    margin-bottom: 50px;
+}
+
+a {
+    color: #00b7c2;
+}
+
+a:hover {
+    color: #cffffe;
+}
+
+.card{
+    background-color: #e4e3e3;
+    color: black;
+    margin: 50px auto;
+}
+
+.jumbotron{
+    margin: 50px auto;
+    background-color: #dddddd;
+    color: black;
+}
+
+.card p {
+    margin-left: 3px;
+}
+
+#button {
+    margin: 5px 0px;
+    margin-left: 10px;
+    display: inline;
+    
+}
+
+#form {
+    display: inline;
+}

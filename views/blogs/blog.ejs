@@ -1,0 +1,32 @@
+<%- include("../partials/header") %>
+
+    <div class="container">
+        <div class="jumbotron">
+            <div class="container" style="text-align: center;">
+                <h1>Welcome to Blog World</h1>
+                <p style="color: #1b6ca8;">Post Blog, Comment on others blog and many more !!</p>
+                <a class="btn btn-info btn-md" href="/blogs/new">Post new Blog</a>
+            </div>    
+        </div>
+       
+        <div class="row text-center" style="display: flex; flex-wrap: wrap;">
+            <% data.forEach(function(blog){%>
+
+                <div class="col-md-6 col-sm-6">
+                   
+                    <div class="card">
+                        <img src="<%= blog.image %>" style="height: 250px;">
+                        <div style="margin: 10px 0px;" class="card-text">
+                            <h3><%= blog.title %></h3>
+                            <a href="/blogs/<%= blog._id %>" class="btn btn-info">More Info</a>
+                        </div>
+                    </div>
+                   </div>
+            <%}) %>
+        </div>
+        
+        
+    </div>
+        
+
+<%- include("../partials/footer") %>
