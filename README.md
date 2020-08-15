@@ -5,5 +5,5 @@ To Run the application, follow the steps
 Steps : 
 1. run - npm install
 2. create a .env file
-3. add mongo url in the .env file
+3. add mongo url in the .env file (mongodb+srv://<username>:<password>@cluster0-td20n.mongodb.net/<dbname>?retryWrites=true&w=majority)
 4. run - node index.js
