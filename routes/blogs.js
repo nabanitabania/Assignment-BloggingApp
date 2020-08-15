@@ -15,18 +15,7 @@ router.get("/blogs",function(req,res){
     });
 });
 
-router.get("/blogs/shared/:string",function(req,res){
-    Blog.findOne({share: req.params.string},function(err,blog){
-        if(err)
-            console.log(err);
-        else
-        {
-            console.log(blog);
-            res.render("blogs/show",{data:blog});
-        }
-            
-    })
-})
+
 
 //CREATE
 router.post("/blogs",middleware.isLoggedIn,function(req,res){
@@ -66,6 +55,18 @@ router.get("/blogs/:id",function(req,res){
     });
 
 });
+
+router.get("/blogs/shared/:string",middleware.isLoggedIn,function(req,res){
+    Blog.findOne({share: req.params.string}).populate("comments").exec(function(err,blog){
+        if(err)
+            console.log(err);
+        else
+        {
+            res.render("blogs/show",{data:blog});
+        }
+            
+    })
+})
 
 //EDIT
 router.get("/blogs/:id/edit",middleware.check,function(req,res){
